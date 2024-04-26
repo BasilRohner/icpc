@@ -21,8 +21,6 @@ typedef vector<ii> vii;
 
 struct Fenwick1d {
 
-    public:
-
         vll bit; int n;
 
         Fenwick1d(vll &a) {

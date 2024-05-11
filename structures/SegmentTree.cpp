@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 typedef long long ll;
@@ -9,9 +8,6 @@ typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef pair<int, int> ii;
 typedef vector<ii> vii;
-
-#define all(v) v.begin(), v.end()
-#define init n(1<<log2(n-1)+1), tree(2*n,1), lazy(2*n,1) 
 
 struct SegmentTree {
   int n;
@@ -150,117 +146,6 @@ class SparseSegment {
 
 }
 
-typedef vllll points;
-typedef vllll matching;
-typedef vvll matrix;
-typedef vvll graph;
-
-typedef complex<double> cd;
-typedef vector<cd> vcd;
-const double pi = acos(-1);
-
-void zfunc() {
-
-}
-
-void fft(vcd &a) {
-
-    int n = a.size();
-    if (n==1) return;
-
-    vcd left(n/2), right(n/2);
-    for (int i = 0; 2*i < n; i++) {
-        left[i] = a[2*i];
-        right[i] = a[2*i+1];
-    }
-
-    fft(left);
-    fft(right);
-
-    cd rou(1), rouk(cos(2*pi/n), sin(2*pi/n));
-    for (int i = 0; 2*i < n; i++) {
-        a[i] = left[i] + rou*right[i];
-        a[i+n/2] = left[i] - rou*right[i];
-        rou *= rouk;
-    }
-}
-
-void ifft(vcd &a) {
-
-    int n = a.size();
-    if (n==1) return;
-
-    vcd left(n/2), right(n/2);
-    for (int i = 0; 2*i < n; i++) {
-        left[i] = a[2*i];
-        right[i] = a[2*i+1];
-    }
-
-    ifft(left);
-    ifft(right);
-
-    cd rou(1), rouk(cos(-2*pi/n), sin(-2*pi/n));
-    for (int i = 0; 2*i < n; i++) {
-        a[i] = left[i] + rou*right[i]; 
-        a[i+n/2] = left[i] - rou*right[i];
-        a[i] /= 2; a[i+n/2] /= 2;
-        rou *= rouk;
-    }
-}
-
-vi multiply(vi const& a, vi const& b) {
-
-    vcd fa(a.begin(), a.end());
-    vcd fb(b.begin(), b.end());
-
-    int n = 1;
-    while (n < a.size() + b.size()) 
-        n <<= 1;
-
-    fa.resize(n);
-    fb.resize(n);
-
-    fft(fa); fft(fb);
-    for (int i = 0; i < n; i++)
-        fa[i] *= fb[i];
-    ifft(fa);
-
-    vi res(n);
-    for (int i = 0; i < n; i++)
-        res[i] = round(fa[i].real());
-    return res;
-}
-
-
-
-vll articulation(graph g) {
+class SegmentBeats {
     
-}
-
-matching karp(graph g) {
-
-}
-
-graph mst(graph g) {
-
-}
-
-graph heavylight(graph g) {
-
-}
-
-graph maxflow(graph g) {
-
-}
-
-points conv(points p) {
-
-}
-
-matrix matmul(matrix a, matrix b) {
-
-}
-
-int main() {
-    return 0;
 }

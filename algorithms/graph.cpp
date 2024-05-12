@@ -33,8 +33,8 @@ void lca(vector<vector<T>> g) {
 }
 
 template<typename T, typename C>
-void maxflow(vector<vector<T>> g, vector<vector<C>> c) {
-
+void maxflow(vector<vector<T>> g, vector<vector<C>> c, T s, T t) {
+    
 }
 
 template<typename T, typename C>

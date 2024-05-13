@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
 
 using namespace std;
+using namespace __gnu_pbds;
 
 typedef long long ll;
 typedef vector<ll> vll;
@@ -10,257 +13,19 @@ typedef vector<vi> vvi;
 typedef pair<int, int> ii;
 typedef vector<ii> vii;
 
-#define all(v) v.begin(), v.end()
-#define init n(1<<log2(n-1)+1), tree(2*n,1), lazy(2*n,1) 
+#define rvi(a) for (int i = 0; i < a.size(); i++) scanf("%d",&a[i]);
+#define rvl(a) for (int i = 0; i < a.size(); i++) scanf("%lld",&a[i]);
+#define rvd(a) for (int i = 0; i < a.size(); i++) scanf("%llf",&a[i]);
+#define all(a) a.begin(), a.end();
 
-struct SegmentTree {
-  int n;
-  vector<Value> tree;
+#define wy printf("YES\n");
+#define wn printf("NO\n");
 
-  SegmentTree(int min_n)
-    : n(next_power_of_two(min_n)),
-      tree(2*n, identity_value()) {}
-
-  Value query(int l, int r) {
-    assert(0 <= l && l < r && r <= n);
-    return query_(l, r, 1, 0, n);
-  }
-
-  void update(int l, int r, Update a) {
-    assert(r - l == 1); // only allow element updates (for now)
-    assert(0 <= l && l < r && r <= n);
-    return update_(a, l, r, 1, 0, n);
-  }
-
-private:
-
-  void apply(int pos, Update a) {
-    tree[pos] = apply_update(a, tree[pos]);
-  }
-
-  void recompute(int pos) {
-    tree[pos] = combine(tree[2*pos], tree[2*pos+1]);
-  }
-
-  Value query_(int ql, int qr, int pos, int l, int r) {
-    if (ql <= l && r <= qr) { return tree[pos]; }
-    if (qr <= l || r <= ql) { return identity_value(); }
-    int m = (l+r)/2;
-    Value ans_l = query_(ql, qr, 2*pos, l, m);
-    Value ans_r = query_(ql, qr, 2*pos+1, m, r);
-    return combine(ans_l, ans_r);
-  }
-
-  void update_(Update a, int ql, int qr, int pos, int l, int r) {
-    if (ql <= l && r <= qr) { apply(pos, a); return; }
-    if (qr <= l || r <= ql) { return; }
-    int m = (l+r)/2;
-    update_(a, ql, qr, 2*pos, l, m);
-    update_(a, ql, qr, 2*pos+1, m, r);
-    recompute(pos); 
-  }
-};
-
-struct LazySegment {
-
-  int n;
-  vector<Value> tree;
-  vector<Update> lazy;
-
-  LazySegment(int min_n)
-    : n(next_power_of_two(min_n)),
-      tree(2*n, identity_value()),
-      lazy(2*n, identity_update()) {}
-
-  LazySegment(vector<Value> const& base)
-    : n(next_power_of_two(base.size())),
-      tree(2*n, identity_value()),
-      lazy(2*n, identity_update()) {
-    for (int i=0; i< base.size(); ++i)
-      tree[n+i] = base[i];
-    build(1, 0, n);
-  }
-
-  Value query(int l, int r) {
-    if (ql <= l && r <= qr) { return t[pos]; }
-    if (qr <= l || r <= ql) { return identity_value(); }
-    propagate(pos);
-    int m = (l+r)/2;
-    Value ans_l = query_(ql, qr, 2*pos, l, m);
-    Value ans_r = query_(ql, qr, 2*pos+1, m, r);
-    return combine(ans_l, ans_r);
-  }
-
-  void update(int l, int r, Update a) {
-    assert(0 <= l && l < r && r <= n);
-    return update_(a, l, r, 1, 0, n);
-  }
-
-private:
-
-  void apply(int pos, Update a) {
-    tree[pos] = apply_update(a, tree[pos]);
-    lazy[pos] = combine_updates(a, lazy[pos]);
-  }
-
-  void recompute(int pos) {
-    tree[pos] = combine(tree[2*pos], tree[2*pos+1]);
-  }
-
-  void propagate(int pos) {
-    apply(2*pos, lazy[pos]);
-    apply(2*pos+1, lazy[pos]);
-    lazy[pos] = identity_update();
-  }
-
-  void build(int pos, int l, int r){
-    if (r - l == 1) return;
-    int m = (l+r)/2;
-    build(2*pos, l, m);
-    build(2*pos+1, m, r);
-    recompute(pos);
-  }
-
-  Value query_(int ql, int qr, int pos, int l, int r) {
-    if (ql <= l && r <= qr) { return tree[pos]; }
-    if (qr <= l || r <= ql) { return identity_value(); }
-    propagate(pos);
-    int m = (l+r)/2;
-    Value ans_l = query_(ql, qr, 2*pos, l, m);
-    Value ans_r = query_(ql, qr, 2*pos+1, m, r);
-    return combine(ans_l, ans_r);
-  }
-
-  void update_(Update a, int ql, int qr, int pos, int l, int r) {
-    if (ql <= l && r <= qr) { apply(pos, a); return; }
-    if (qr <= l || r <= ql) { return; }
-    propagate(pos);
-    int m = (l+r)/2;
-    update_(a, ql, qr, 2*pos, l, m);
-    update_(a, ql, qr, 2*pos+1, m, r);
-    recompute(pos);
-  }
-};
-
-class PersistentSegment {
-
-}
-
-class SparseSegment {
-
-}
-
-typedef vllll points;
-typedef vllll matching;
-typedef vvll matrix;
-typedef vvll graph;
-
-typedef complex<double> cd;
-typedef vector<cd> vcd;
-const double pi = acos(-1);
-
-void zfunc() {
-
-}
-
-void fft(vcd &a) {
-
-    int n = a.size();
-    if (n==1) return;
-
-    vcd left(n/2), right(n/2);
-    for (int i = 0; 2*i < n; i++) {
-        left[i] = a[2*i];
-        right[i] = a[2*i+1];
-    }
-
-    fft(left);
-    fft(right);
-
-    cd rou(1), rouk(cos(2*pi/n), sin(2*pi/n));
-    for (int i = 0; 2*i < n; i++) {
-        a[i] = left[i] + rou*right[i];
-        a[i+n/2] = left[i] - rou*right[i];
-        rou *= rouk;
-    }
-}
-
-void ifft(vcd &a) {
-
-    int n = a.size();
-    if (n==1) return;
-
-    vcd left(n/2), right(n/2);
-    for (int i = 0; 2*i < n; i++) {
-        left[i] = a[2*i];
-        right[i] = a[2*i+1];
-    }
-
-    ifft(left);
-    ifft(right);
-
-    cd rou(1), rouk(cos(-2*pi/n), sin(-2*pi/n));
-    for (int i = 0; 2*i < n; i++) {
-        a[i] = left[i] + rou*right[i]; 
-        a[i+n/2] = left[i] - rou*right[i];
-        a[i] /= 2; a[i+n/2] /= 2;
-        rou *= rouk;
-    }
-}
-
-vi multiply(vi const& a, vi const& b) {
-
-    vcd fa(a.begin(), a.end());
-    vcd fb(b.begin(), b.end());
-
-    int n = 1;
-    while (n < a.size() + b.size()) 
-        n <<= 1;
-
-    fa.resize(n);
-    fb.resize(n);
-
-    fft(fa); fft(fb);
-    for (int i = 0; i < n; i++)
-        fa[i] *= fb[i];
-    ifft(fa);
-
-    vi res(n);
-    for (int i = 0; i < n; i++)
-        res[i] = round(fa[i].real());
-    return res;
-}
-
-
-
-vll articulation(graph g) {
-    
-}
-
-matching karp(graph g) {
-
-}
-
-graph mst(graph g) {
-
-}
-
-graph heavylight(graph g) {
-
-}
-
-graph maxflow(graph g) {
-
-}
-
-points conv(points p) {
-
-}
-
-matrix matmul(matrix a, matrix b) {
+void solve() {
 
 }
 
 int main() {
-    return 0;
+    int n; scanf("%d",&n);
+    while (n--) solve();
 }

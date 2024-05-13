@@ -1,0 +1,1 @@
+cout << ck <<  " " << cn  << "  " << bn  << " " << bnmincn << endl;

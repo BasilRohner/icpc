@@ -1,12 +1,12 @@
 #include <iostream>
 #include <vector>
 
+using namespace std;
+
+template<typename T = int>
 struct SegmentTree {
-    typedef int T;
-    static constexpr T u = -1e8;
-    T f(T a, T b) { return std::max(a,b); }
-    std::vector<T> t; int n;
-    SegmentTree(int n = 0) : t(n<<1), n(n) {}
+    vector<T> t; int n; T u; function<T(T,T)> f;
+    SegmentTree(int n = 0, T u, function<T(T,T)> f) : t(n<<1), n(n), u(u), f(f) {}
     void update(int p, T v) {
         for (t[p += n] = v; p /= 2;)
             t[p] = f(t[p<<1], t[p<<2|1]);     

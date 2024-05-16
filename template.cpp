@@ -10,26 +10,19 @@ typedef vector<vi> vvi;
 typedef pair<int, int> ii;
 typedef vector<ii> vii;
 
-template<typename T> T gcd(T a, T b) { return b?gcd(b,a%b):a; }
-template<typename T> T lcm(T a, T b) { return a*b/gcd(a,b); }
+const ll INF = 1e9;
+const ll FNI = -1e9;
+const ll EPS = 1e-9;
+const ll MOD = 1e9+7;
 
+#define wb(b) printf(b?"YES\n":"NO\n");
 #define rvi(a) for (int i = 0; i < a.size(); i++) scanf("%d",&a[i]);
 #define rvl(a) for (int i = 0; i < a.size(); i++) scanf("%lld",&a[i]);
 #define rvd(a) for (int i = 0; i < a.size(); i++) scanf("%llf",&a[i]);
 #define all(a) a.begin(), a.end();
 
-#define wy printf("YES\n");
-#define wn printf("NO\n");
-
-template<typename T> T binexp(T b, T e, ll m = 100000007) {
-    T res=1; for (;e;b=b*b%m,e/=2)
-        if (e&1) res = res*b%m;
-    return res;
-}
-
-template<typename T> T modinv(T b, ll m = 100000007) { return binexp(b,m-2,m); }
-
-/* Template End Here */
+ll bin(ll a, ll b) { ll r = 1; for (;b;a*=a,b>>=1) if (b&1) r*=a; return r; }
+ll mod(ll a, ll b, ll m = MOD) { ll r = 1; for (a%=m;b;a=a*a%m,b>>=1) if (b&1) r=r*a%m; return r; }
 
 void solve() {
 

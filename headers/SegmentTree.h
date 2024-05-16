@@ -5,7 +5,9 @@ using namespace std;
 
 template<typename T = int>
 struct SegmentTree {
+
     vector<T> t; int n; T u; function<T(T,T)> f;
+    
     SegmentTree(int n = 0, T u, function<T(T,T)> f) : t(n<<1), n(n), u(u), f(f) {}
     void update(int p, T v) {
         for (t[p += n] = v; p /= 2;)

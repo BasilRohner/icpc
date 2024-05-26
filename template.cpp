@@ -1,34 +1,53 @@
+#include <iostream>
 #include <bits/stdc++.h>
-
 using namespace std;
 
 typedef long long ll;
 typedef vector<ll> vll;
-typedef vector<vll> vvll;
 typedef vector<int> vi;
+typedef vector<vll> vvll;
 typedef vector<vi> vvi;
 typedef pair<int, int> ii;
 typedef vector<ii> vii;
+typedef vector<bool> vb;
+typedef vector<vb> vvb;
 
-const ll inf = 1e9;
-const ll fni = -1e9;
-const ll eps = 1e-9;
+template<typename A, typename B> 
+inline ostream& operator<< (ostream& out, const pair<A, B>& p) { return out << "(" << p.first << ", " << p.second << ")\n"; }
+template<typename T> 
+inline ostream& operator<< (ostream& out, const vector<T>& a) { out << "["; for (int i = 0; i < a.size(); i++) { if (i) out << ','; out << ' ' << a[i]; } return out << " ]\n"; } 
+template<typename T> 
+inline ostream& operator<< (ostream& out, const set<T>& a) { return out << vector<T>(a.begin(), a.end()); }
 
-#define wb(b) printf(b?"yes\n":"no\n");
-#define rvi(a) for (int i = 0; i < a.size(); i++) scanf("%d",&a[i]);
-#define rvl(a) for (int i = 0; i < a.size(); i++) scanf("%lld",&a[i]);
-#define rvd(a) for (int i = 0; i < a.size(); i++) scanf("%llf",&a[i]);
-#define all(a) a.begin(), a.end();
+template<typename A, typename B>
+inline ostream& operator>> (ostream& in, const pair<A, B>& a) { cin >> a.first >> a.second; }
+template<typename T>
+inline ostream& operator>> (ostream& in, const vector<T>& a) { for (int i = 0; i < a.size(); i++) cin >> a[i]; }
+template<typename T>
+inline ostream& operator>> (ostream& in, const set<T>& a, int n) { for (int i = 0; i < n; i++) { T x; cin >> x; a.insert(x); } }
 
-ll bin(ll a, ll b) { ll r = 1; for (;b;a*=a,b>>=1) if (b&1) r*=a; return r; }
-ll mod(ll a, ll b, ll m = 1e9+7) { ll r = 1; for (a%=m;b;a=a*a%m,b>>=1) if (b&1) r=r*a%m; return r; }
-ll inv(ll a, ll m = 1e9+7) { return mod(a,m-2,m); }
+template<typename T>
+inline ostream& operator>> (ostream& in, const vector<vector<T> >& g, bool dir, int n) {
+    for (int i = 0; i < n; i++) {
+        T x,y; cin >> x >> y;
+        g.at(x).push_back(y);
+        if (dir) g.at(y).push_back(y);
+    }
+}
+
+template<typename T>
+T gcd(T a, T b) { return (b ? gcd(b,a%b) : a); }
+template<typename T>
+T lcm(T a, T b) { return a*b/gcd(a,b); }
+
 
 void solve() {
-
+    int n, m; cin >> n >> m;
 }
 
 int main() {
-    int n; scanf("%d",&n);
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int n; cin >> n;
     while (n--) solve();
 }

@@ -1,0 +1,247 @@
+{
+    // Snippet File Generated Using parse.py from www.github.com/BasilRohner/icpc/snippets/parse.py
+    // Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+
+ "Template": {
+     "scope": "cpp",
+     "prefix": "icpc_templ",
+     "body": [
+         "#include <bits/stdc++.h>",
+         "using namespace std;",
+         "",
+         "typedef long long ll;",
+         "typedef vector<ll> vll;",
+         "typedef vector<int> vi;",
+         "typedef vector<vll> vvll;",
+         "typedef vector<vi> vvi;",
+         "typedef pair<int, int> ii;",
+         "typedef vector<ii> vii;",
+         "typedef vector<bool> vb;",
+         "typedef vector<vb> vvb;",
+         "",
+         "template<typename A, typename B> inline ostream& operator<< (ostream& out, const pair<A, B>& p) { return out << p.first << \" \" << p.second << \"\\n\"; }",
+         "template<typename T> inline ostream& operator<< (ostream& out, const vector<T>& a) { for (int i = 0; i < a.size(); i++) { out << a[i] << ' '; } return out; }",
+         "template<typename A, typename B> inline ostream& operator>> (ostream& in, const pair<A, B>& a) { cin >> a.first >> a.second; }",
+         "template<typename T> inline ostream& operator>> (ostream& in, const vector<T>& a) { for (int i = 0; i < a.size(); i++) cin >> a[i]; }",
+         "template<typename T> inline ostream& operator>> (ostream& in, const vector<vector<T> >& a) { for (int i = 0; i < a.size(); i++) cin >> a[i]; }",
+         "",
+         "template<typename T>",
+         "T gcd(T a, T b) { return (b ? gcd(b,a%b) : a); }",
+         "template<typename T>",
+         "T lcm(T a, T b) { return a*b/gcd(a,b); }",
+         "",
+         "",
+         "void solve() {",
+         "    int m, d; cin >> m >> d;",
+         "    if (d == 1 && m == 4)",
+         "        cout << \"YES\";",
+         "    else cout << \"NO\";",
+         "}",
+         "",
+         "int main() {",
+         "    ios_base::sync_with_stdio(false);",
+         "    cin.tie(nullptr);",
+         "    solve();",
+         "}",
+     ],
+     "description": "Icpc - std template"
+ }
+
+,
+ "DFS-Function": {
+     "scope": "cpp",
+     "prefix": "icpc_dfs",
+     "body": [
+         "struct DFS {",
+         "",
+         "    vvi adj;",
+         "",
+         "};",
+     ],
+     "description": "Icpc - dfs implementation"
+ }
+
+,
+ "BFS-Function": {
+     "scope": "cpp",
+     "prefix": "icpc_bfs",
+     "body": [
+         "struct BFS {",
+         "",
+         "    vvi adj;",
+         "",
+         "};",
+     ],
+     "description": "Icpc - bfs implementation"
+ }
+
+,
+ "LCA-Function": {
+     "scope": "cpp",
+     "prefix": "icpc_lca",
+     "body": [
+         "struct LCA {",
+         "",
+         "    vvi adj;",
+         "",
+         "};",
+     ],
+     "description": "Icpc - lca implementation"
+ }
+
+,
+ "HLD-Function": {
+     "scope": "cpp",
+     "prefix": "icpc_hld",
+     "body": [
+         "struct HLD {",
+         "",
+         "    vvi adj;",
+         "",
+         "};",
+     ],
+     "description": "Icpc - hld implementation"
+ }
+
+,
+ "Segment Tree": {
+     "scope": "cpp",
+     "prefix": "icpc_segment",
+     "body": [
+         "struct SegmentTree {",
+         "",
+         "    vvi adj;",
+         "",
+         "};",
+     ],
+     "description": "Icpc - Segment Tree implementation"
+ }
+
+,
+ "Lazy Segment Tree": {
+     "scope": "cpp",
+     "prefix": "icpc_lazysegment",
+     "body": [
+         "struct LazySegmentTree {",
+         "",
+         "    vvi adj;",
+         "",
+         "};",
+     ],
+     "description": "Icpc - Lazy Segment Tree implementation"
+ }
+
+,
+ "Fenwick Tree": {
+     "scope": "cpp",
+     "prefix": "icpc_fenwick",
+     "body": [
+         "struct FenwickTree {",
+         "",
+         "    vvi adj;",
+         "",
+         "};",
+     ],
+     "description": "Icpc - Fenwick Tree implementation"
+ }
+
+,
+ "Trie": {
+     "scope": "cpp",
+     "prefix": "icpc_trie",
+     "body": [
+         "struct Trie {",
+         "",
+         "    vvi adj;",
+         "",
+         "};",
+     ],
+     "description": "Icpc - Trie implementation"
+ }
+
+,
+ "Corasick": {
+     "scope": "cpp",
+     "prefix": "icpc_corasick",
+     "body": [
+         "struct Corasick {",
+         "",
+         "    vvi adj;",
+         "",
+         "};",
+     ],
+     "description": "Icpc - Corasick implementation"
+ }
+
+,
+ "Z-Function": {
+     "scope": "cpp",
+     "prefix": "icpc_zfunc",
+     "body": [
+         "struct ZFunction {",
+         "",
+         "    vvi adj;",
+         "",
+         "};",
+     ],
+     "description": "Icpc - Z-Function implementation"
+ }
+
+,
+ "String Hashing": {
+     "scope": "cpp",
+     "prefix": "icpc_strhash",
+     "body": [
+         "struct StringHashing {",
+         "",
+         "    vvi adj;",
+         "",
+         "};",
+     ],
+     "description": "Icpc - String Hashing Implementation"
+ }
+
+,
+ "Hopcroft Karp": {
+     "scope": "cpp",
+     "prefix": "icpc_hopcroft",
+     "body": [
+         "struct HopcroftKarp {",
+         "",
+         "    vvi adj;",
+         "",
+         "};",
+     ],
+     "description": "Icpc - Hopcroft Karp Matching Implementation"
+ }
+
+,
+ "Minimum Spanning Tree": {
+     "scope": "cpp",
+     "prefix": "icpc_mst",
+     "body": [
+         "struct MST {",
+         "",
+         "    vvi adj;",
+         "",
+         "};",
+     ],
+     "description": "Icpc - ..."
+ }
+
+}

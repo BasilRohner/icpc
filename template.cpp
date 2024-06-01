@@ -12,19 +12,11 @@ typedef vector<ii> vii;
 typedef vector<bool> vb;
 typedef vector<vb> vvb;
 
-template<typename A, typename B> 
-inline ostream& operator<< (ostream& out, const pair<A, B>& p) { return out << "(" << p.first << ", " << p.second << ")\n"; }
-template<typename T> 
-inline ostream& operator<< (ostream& out, const vector<T>& a) { out << "["; for (int i = 0; i < a.size(); i++) { if (i) out << ','; out << ' ' << a[i]; } return out << " ]\n"; } 
-template<typename T> 
-inline ostream& operator<< (ostream& out, const set<T>& a) { return out << vector<T>(a.begin(), a.end()); }
-
-template<typename A, typename B>
-inline ostream& operator>> (ostream& in, const pair<A, B>& a) { cin >> a.first >> a.second; }
-template<typename T>
-inline ostream& operator>> (ostream& in, const vector<T>& a) { for (int i = 0; i < a.size(); i++) cin >> a[i]; }
-template<typename T>
-inline ostream& operator>> (ostream& in, const set<T>& a, int n) { for (int i = 0; i < n; i++) { T x; cin >> x; a.insert(x); } }
+template<typename A, typename B> inline ostream& operator<< (ostream& out, const pair<A, B>& p) { return out << p.first << " " << p.second << "\n"; }
+template<typename T> inline ostream& operator<< (ostream& out, const vector<T>& a) { for (int i = 0; i < a.size(); i++) { out << a[i] << ' '; } return out; } 
+template<typename A, typename B> inline ostream& operator>> (ostream& in, const pair<A, B>& a) { cin >> a.first >> a.second; }
+template<typename T> inline ostream& operator>> (ostream& in, const vector<T>& a) { for (int i = 0; i < a.size(); i++) cin >> a[i]; }
+template<typename T> inline ostream& operator>> (ostream& in, const vector<vector<T> >& a) { for (int i = 0; i < a.size(); i++) cin >> a[i]; }
 
 template<typename T>
 inline ostream& operator>> (ostream& in, const vector<vector<T> >& g, bool dir, int n) {

@@ -1,3 +1,7 @@
 .vscode
 .idea
 .DS_Store
+
+// Haskell
+*.hi
+*.o

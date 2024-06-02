@@ -18,3 +18,30 @@ This project provides a collection of competitive programming templates for the 
 
 ## Haskell Snippet Parser
 
+Additionally find the custom [Haskell-Snippet-Parser](./src/parse.hs) that allows you to automatically generate vscode-snippets.To use the snippet-parser please edit the [configuration](./src/config.json)-file and then run `.parse`. Please find an example below:
+
+```cpp
+/*Template.cpp*/
+#include <iostream>
+using namespace std;
+
+int main() {
+  cout << "Hello World!" << endl;
+}
+```
+```json
+/*icpc.code-snippets*/
+{
+  "Template": {
+    "prefix": "template",
+    "scope": "cpp",
+    "body": [
+      "#include <iostream>",
+      "using namespace std;",
+      "",
+      "int main() {",
+      "  cout << \"Hello World!\" << endl;",
+      "}"
+   ]
+  }
+}

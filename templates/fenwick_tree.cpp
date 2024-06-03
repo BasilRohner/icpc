@@ -15,6 +15,7 @@ struct FenwickTree {
     }
 
     FenwickTree(vector<T> const &a) : FenwickTree(a.size()) {
+        for (size_t i = 0; i < a.size(); i++)
             modify(i, a[i]);
     }
 

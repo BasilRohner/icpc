@@ -10,6 +10,14 @@
             "ext": "py"
         }
     },
+    "skip": [
+        "#include",
+        "using",
+        "typedef"
+    ],
+    "skipignore": [
+        "Template"
+    ],
     "prefix": "$",
     "targetdir": "/Library/Application Support/Code/User/snippets/icpc.code-snippets",
     "sourcedir": "../templates/",

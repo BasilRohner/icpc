@@ -3,7 +3,7 @@ import System.Environment
 import System.Directory  (getDirectoryContents, doesDirectoryExist, doesFileExist, getHomeDirectory)
 import System.FilePath   ((</>), takeFileName)
 import Control.Monad     (forM, filterM, mapM)
-import Data.List         (isSuffixOf)
+import Data.List         (isSuffixOf, isPrefixOf, dropWhileEnd, dropWhile)
 import Data.Char         (toLower)
 import Prelude   hiding  ((*))
 
@@ -45,6 +45,19 @@ splitOnDot str = (beforeDot, afterDot)
     (beforeDot, rest) = break (== '.') str
     afterDot = if null rest then "" else tail rest
 
+filteredContent :: [[String]] -> [(String, String)] -> [String] -> [String] -> [[String]]
+filteredContent content names skip skipignore =
+    zipWith filterContent content names
+  where
+    filterContent :: [String] -> (String, String) -> [String]
+    filterContent entry (name1, _) =
+      if name1 `elem` skipignore
+        then removePadding entry
+        else removePadding $ filter (\f -> not (any (`isPrefixOf` f) skip)) entry
+
+removePadding :: [String] -> [String]
+removePadding = dropWhile (== "") . dropWhileEnd (== "")
+
 -- Main Method
 
 main :: IO()
@@ -57,6 +70,8 @@ main = do
     let ext = [".cpp", ".py", ".hs"]                                                                -- src template file extensions
     let pre = "$"                                                                                   -- prefix for template prefix
     let tab = "    "
+    let skip = ["#include", "typedef", "using"]
+    let skipignore = ["Template"]
 
     exists <- doesDirectoryExist pth
     if  exists
@@ -67,7 +82,7 @@ main = do
             let names = map (splitOnDot . takeFileName) files
 
             content <- mapM (readLines . (pth ++)) files
-            let res =  map (unlines . map ((++ "\",") . ((3*tab++"\"")++) . sanitize)) content
+            let res =  map (unlines . map ((++ "\",") . ((3*tab++"\"")++) . sanitize)) $ filteredContent content names skip skipignore
             writeLines names res trg pre tab
 
     else error "Path does not exist"

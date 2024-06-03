@@ -21,6 +21,7 @@ template<typename A, typename B> inline istream& operator>> (istream& in, const 
 template<typename T> inline istream& operator>> (istream& in, const vector<T>& a) { for (int i = 0; i < a.size(); i++) cin >> a[i]; }
 template<typename T> inline istream& operator>> (istream& in, const vector<vector<T> >& a) { for (int i = 0; i < a.size(); i++) cin >> a[i]; }
 
+map<char, int> freq(string const &str) { map<char, int> res; for (char c : str) res[c]++; }
 template<typename T> inline T gcd(T a, T b) { return b ? gcd(b,a%b) : a; }
 template<typename T> inline T lcm(T a, T b) { return a * b / gcd(a,b); }
 template<typename T> inline T binpow(T b, T e) { T r = 1; for (; e; e >>= 1) { if (e&1) r *= b; b *= b; } return r; }

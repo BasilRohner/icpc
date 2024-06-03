@@ -41,7 +41,17 @@ writeReadme s pth = writeFile pth $ "# ICPC - Competitive Programming Template\n
                                     ++ "      \"int main() {\",\n"
                                     ++ "      \"  cout << \\\"Hello World!\\\" << endl;\",\n"
                                     ++ "      \"}\"\n   ]\n"
-                                    ++ "  }\n}"
+                                    ++ "  }\n}\n\n"
+                                    ++ "// Or depending on configuration \n\n"
+                                    ++ "{\n"
+                                    ++ "  \"Template\": {\n"
+                                    ++ "    \"prefix\": \"template\",\n"
+                                    ++ "    \"scope\": \"cpp\",\n"
+                                    ++ "    \"body\": [\n"
+                                    ++ "      \"int main() {\",\n"
+                                    ++ "      \"  cout << \\\"Hello World!\\\" << endl;\",\n"
+                                    ++ "      \"}\"\n   ]\n"
+                                    ++ "  }\n}\n\n```"
 
 parse :: String -> String -> String
 parse pref src = "- [?] ["++pref++"]("++src++")"

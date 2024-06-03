@@ -73,3 +73,19 @@ int main() {
    ]
   }
 }
+
+// Or depending on configuration 
+
+{
+  "Template": {
+    "prefix": "template",
+    "scope": "cpp",
+    "body": [
+      "int main() {",
+      "  cout << \"Hello World!\" << endl;",
+      "}"
+   ]
+  }
+}
+
+```

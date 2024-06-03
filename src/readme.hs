@@ -44,7 +44,7 @@ writeReadme s pth = writeFile pth $ "# ICPC - Competitive Programming Template\n
                                     ++ "  }\n}"
 
 parse :: String -> String -> String
-parse pref src = "- ["++pref++"]("++src++")"
+parse pref src = "- [x] ["++pref++"]("++src++")"
 
 main :: IO()
 main = do

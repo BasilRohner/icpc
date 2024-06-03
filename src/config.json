@@ -1,0 +1,17 @@
+{
+    "whitelist": {
+        "cpp": {
+            "ext": "cpp"
+        },
+        "hashell": {
+            "ext": "hs"
+        },
+        "python": {
+            "ext": "py"
+        }
+    },
+    "prefix": "$",
+    "targetdir": "/Library/Application Support/Code/User/snippets/icpc.code-snippets",
+    "sourcedir": "../templates/",
+    "tabsze": 4
+}
